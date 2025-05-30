@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    <!-- Purple circle background -->
+    <path
+        android:fillColor="#7B6CF6"
+        android:pathData="M24,4a20,20 0 1,0 0,40a20,20 0 1,0 0,-40z"/>
+    <!-- White magnifying glass -->
+    <group android:translateX="12" android:translateY="12">
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M8,0a8,8 0 1,1 0,16a8,8 0 1,1 0,-16z"/>
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M14,14l6,6"
+            android:strokeColor="#FFFFFF"
+            android:strokeWidth="2"/>
+    </group>
+</vector> 

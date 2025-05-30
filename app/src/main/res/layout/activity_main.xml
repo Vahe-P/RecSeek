@@ -1,74 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
+    android:background="@color/purple_dark"
     tools:context=".MainActivity">
 
-    <RadioGroup
-        android:id="@+id/typeSelector"
+    <!-- Top App Bar -->
+    <LinearLayout
+        android:id="@+id/topBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <RadioButton
-            android:id="@+id/movieOption"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Movies"
-            android:checked="true"/>
-
-        <RadioButton
-            android:id="@+id/musicOption"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Music"/>
-
-        <RadioButton
-            android:id="@+id/bookOption"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Books"/>
-
-        <RadioButton
-            android:id="@+id/animeOption"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Anime"/>
-
-        <RadioButton
-            android:id="@+id/tvOption"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TV Shows"/>
-    </RadioGroup>
-
-    <EditText
-        android:id="@+id/editTextQuery"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter movie, song, artist, book, or TV show"
-        android:layout_marginTop="16dp"/>
-
-    <Button
-        android:id="@+id/buttonGetRecommendations"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Get Recommendations"
-        android:layout_marginTop="16dp"/>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="16dp">
-
+        android:layout_height="56dp"
+        android:background="@color/purple_light"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
         <TextView
-            android:id="@+id/textViewResults"
+            android:id="@+id/titleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Media Recommendations"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginStart="16dp" />
+    </LinearLayout>
+
+    <!-- Card Container -->
+    <LinearLayout
+        android:id="@+id/cardContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/rounded_card"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/topBar"
+        android:layout_marginTop="48dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:padding="20dp"
+        android:elevation="8dp"
+        android:clipToOutline="true"
+        android:backgroundTint="@color/purple_light"
+        android:backgroundTintMode="src_in"
+        android:layout_gravity="center"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true">
+
+        <!-- Chips Row -->
+        <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp"/>
-    </ScrollView>
+            android:overScrollMode="never"
+            android:scrollbars="none">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/chipMovies"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Movies"
+                    android:textColor="@color/purple_dark"
+                    android:backgroundTint="@color/white"
+                    android:layout_marginEnd="8dp" />
+                <Button
+                    android:id="@+id/chipMusic"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Music"
+                    android:textColor="@color/purple_dark"
+                    android:backgroundTint="@color/white"
+                    android:layout_marginEnd="8dp" />
+                <Button
+                    android:id="@+id/chipBooks"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Books"
+                    android:textColor="@color/purple_dark"
+                    android:backgroundTint="@color/white"
+                    android:layout_marginEnd="8dp" />
+                <Button
+                    android:id="@+id/chipAnime"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Anime"
+                    android:textColor="@color/purple_dark"
+                    android:backgroundTint="@color/white"
+                    android:layout_marginEnd="8dp" />
+                <Button
+                    android:id="@+id/chipTV"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TV Shows"
+                    android:textColor="@color/purple_dark"
+                    android:backgroundTint="@color/white" />
+            </LinearLayout>
+        </HorizontalScrollView>
 
-</LinearLayout>
+        <!-- EditText -->
+        <EditText
+            android:id="@+id/editTextQuery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter title, artist, or author"
+            android:background="@drawable/rounded_edittext"
+            android:padding="12dp"
+            android:textColor="@color/purple_dark"
+            android:textColorHint="@color/purple_accent"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Favorites and History Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <Button
+                android:id="@+id/buttonFavorites"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="FAVORITES"
+                android:textColor="@color/purple_dark"
+                android:backgroundTint="@color/purple_accent"
+                android:drawableLeft="@android:drawable/btn_star"
+                android:layout_marginEnd="8dp" />
+            <Button
+                android:id="@+id/buttonHistory"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="HISTORY"
+                android:textColor="@color/purple_dark"
+                android:backgroundTint="@color/purple_accent"
+                android:drawableLeft="@android:drawable/ic_menu_recent_history" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Results ListView in a ScrollView -->
+    <ListView
+        android:id="@+id/listViewResults"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_below="@id/cardContainer"
+        android:layout_above="@id/buttonGetRecommendations"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="8dp"
+        android:background="@android:color/transparent"/>
+
+    <!-- Get Recommendations Button at Bottom -->
+    <Button
+        android:id="@+id/buttonGetRecommendations"
+        android:layout_width="246dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="93dp"
+        android:background="@drawable/rounded_button"
+        android:backgroundTint="@color/button_bg"
+        android:elevation="8dp"
+        android:text="GET RECOMMENDATIONS"
+        android:textAllCaps="true"
+        android:textColor="@color/button_text" />
+
+</RelativeLayout>
